@@ -1,0 +1,7 @@
+OriData<-read.table("D:/r_tmp/assignmentdata/household_power_consumption.txt",sep=";",header=TRUE)
+OriData$Date<-as.Date(OriData$Date,"%d/%m/%Y")
+PlotData<-subset(OriData,Date=="2007-02-01"|Date=="2007-02-02")
+PlotData$Global_active_power<-as.numeric(as.character(PlotData$Global_active_power))
+hist(PlotData$Global_active_power,col="red",main=paste("Global active power"),xlab="Global active power")
+dev.copy(png,file="plot1.png",height=480, width=480)
+dev.off()
